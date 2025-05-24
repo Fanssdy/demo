@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/layout/header.vue'
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -15,12 +15,82 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
-  </header>
-
-  <RouterView />
+  </header> -->
+  <!-- <RouterView /> -->
+  <div class="app-root">
+    <el-container class="full-height">
+      <el-header class="header">
+      <Header></Header>
+      </el-header>
+      
+       <el-main class="main-content">
+          <RouterView />
+       </el-main>
+        <!-- <el-aside width="200px" class="aside">Aside</el-aside> -->
+      
+       <!-- <div class="footer">Footer</div> -->
+    </el-container>
+  </div>
 </template>
 
+
+<style >
+/* 全局强制重置 */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+</style>
+
 <style scoped>
+.app-root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.full-height {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: #B3C0D1;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+
+
+.main-content {
+  flex: 1;
+  padding: 0px;
+}
+
+.footer {
+  background: #B3C0D1;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  flex-shrink: 0;
+}
+</style>
+
+<!-- <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -82,4 +152,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
