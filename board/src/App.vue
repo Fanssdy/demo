@@ -49,6 +49,13 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+.el-sub-demo{
+  .el-menu{
+    background-color: rgb(255, 255, 255);
+    
+  }
+}
 </style>
 
 <style scoped>
