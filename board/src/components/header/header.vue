@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import { Search,User,Menu } from '@element-plus/icons-vue'
 import type { ElMenuItem } from 'element-plus';
-import { ref ,computed,watch } from 'vue'
+import { ref ,watch } from 'vue'
 import { useRoute } from 'vue-router'
+import Menuitem from '../../components/header/MarketMenuItem.vue'
+import menuItems from '@/data/menuItems'
+
 const route = useRoute()
 const firstMenuItem = ref<InstanceType<typeof ElMenuItem> | null>(null);
 const SearchVisible = ref(false)
@@ -20,6 +23,8 @@ const handleSubMenuClick = () => {
 watch(() => route.path, (newPath) => {
   activeIndex.value = newPath.split('/').pop() || newPath;
 }, { immediate: true })
+
+
 </script>
 <template>
     <el-menu
@@ -33,7 +38,7 @@ watch(() => route.path, (newPath) => {
     <el-menu-item index="/">
       <img
         style="width: 100px"
-        src="@/assets/logo.svg"
+        src="../../assets/logo.svg"
         alt="logo"
         width="28" height="28"
       />
@@ -43,49 +48,28 @@ watch(() => route.path, (newPath) => {
         搜索
         </el-button>
     </el-menu-item>
-
+    
     <el-sub-menu popper-class="el-sub-demo" index="/market">
       <template #title >
         <span @click="handleSubMenuClick">市场</span>
       </template>
       <el-menu-item index="/market" ref="firstMenuItem" >
         <img
-        class="icons_style"
+        class="circle_style"
         src="@/assets/globe.svg"
         alt="logo"
         width="16" height="16"
         />
-        行情</el-menu-item>
-      <el-menu-item index="/market/a">
-        <img
-        class="circle_style"
-        src="@/assets/sse-composite--big.svg"
-        alt="logo"
-        width="16" height="16"
-        />
-        A股</el-menu-item>
-      <el-menu-item index="/market/h">
-        <img
-        class="circle_style"
-        src="@/assets/hangsheng.png"
-        alt="logo"
-        width="16" height="16"
-        />
-        港股</el-menu-item>
-        <el-sub-menu index="/market/h">
-          <template #title>
-            <img
-              class="circle_style"
-              src="@/assets/NASDAQ.png"
-              alt="logo"
-              width="16" height="16"
-              />
-            美股
-          </template>
-          <el-menu-item index="2-4-1">item one</el-menu-item>
-          <el-menu-item index="2-4-2">item two</el-menu-item>
-          <el-menu-item index="2-4-3">item three</el-menu-item>
-        </el-sub-menu>
+        行情
+      </el-menu-item>
+      <Menuitem
+        v-for="item in menuItems"
+        :key="item.index"
+        :index="item.index"
+        :icon="item.icon"
+        :label="item.label"
+        :children="item.children || []"
+      />  
     </el-sub-menu>
     <el-menu-item index="/stock">个股</el-menu-item>
     <el-menu-item index="/fund">ETF</el-menu-item>
@@ -109,28 +93,25 @@ watch(() => route.path, (newPath) => {
   </el-dialog>
 </template>
 
-
 <style>
-
 .el-menu--horizontal>.el-sub-menu .el-sub-menu__title {
     border-bottom: none !important;
     color: var(--el-menu-text-color);
-    /* padding-right: 20px !important;  */
     height: 100%;
 }
- .el-sub-menu .el-sub-menu__icon-arrow{
-  display: none;
+</style>
+<style scoped>
+
+:deep(.el-sub-menu .el-sub-menu__icon-arrow){
+    display: none;
     width: 0 !important;
     height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
 }
-.el-sub-menu .el-sub-menu__title {
-  padding-right: 20px !important; /* 调整标题内边距 */
+:deep(.el-sub-menu .el-sub-menu__title) {
+  padding-right: 20px !important;
 }
-</style>
-
-<style scoped>
 /* 调整布局 */
 .el-menu--horizontal > .el-menu-item:nth-child(1) {
     margin-right: auto;

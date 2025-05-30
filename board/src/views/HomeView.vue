@@ -2,6 +2,7 @@
 import TheWelcome from '../components/TheWelcome.vue'
 import Footer from '../components/layout/footer.vue'
 // import Home from '@/components/Home.vue';
+
 </script>
 
 <template>
