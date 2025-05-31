@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type {MenuChild} from '@/types/menu'
-
+import type {MarketCardItem} from '@/types/menu'
+import MarketCard from '@/components/header/marketCard.vue'
 defineProps<{
   index: string
   icon: string
   label: string
-  children?: MenuChild[]  // 使用接口定义children结构
+  children?: MarketCardItem[]  // 使用接口定义children结构
 }>()
 </script>
 
@@ -32,7 +32,7 @@ defineProps<{
       class="custom-menu-item"
     >
     
-      <el-card style="width: 240px" shadow="hover" body-style="padding: 10px">{{ child.label }}</el-card>
+      <MarketCard :data="child" />
     </el-menu-item>
   </el-sub-menu>
   
@@ -54,11 +54,11 @@ defineProps<{
   border-radius: 50%;
   margin-right: 8px;
 }
-.right-arrow { 
+/* .right-arrow { 
   margin-left: auto;
   color: var(--el-text-color-secondary);
   font-size: 5px;
-}
+} */
 .menu-item-content {
   display: flex;
   align-items: center;

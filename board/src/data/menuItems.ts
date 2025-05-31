@@ -6,8 +6,23 @@ const menuItems: MenuItem[] = [
     icon: new URL('@/assets/sse-composite--big.svg', import.meta.url).href,
     label: 'A股',
     children: [
-      { index: '/market/a/sh', label: '上证综指' },
-      { index: '/market/a/sz', label: '深圳成指' },
+    {
+        index: '/market/a/sh',
+        label: '上证综指',
+        icon: new URL('@/assets/sse-composite--big.svg',import.meta.url).href,
+        status: 'trading',
+        value: 3285.12,
+        unit: '¥',
+        changePercent: 1.25
+    },
+    {
+    index: '/market/a/sz',
+    label: '深证成指', 
+    status: 'closed',
+    value: 11958.55,
+    unit: '¥',
+    changePercent: -0.68
+    },
       { index: '/market/a/300', label: '沪深300' }
     ]
   },

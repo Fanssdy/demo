@@ -3,7 +3,7 @@ import { Search,User,Menu } from '@element-plus/icons-vue'
 import type { ElMenuItem } from 'element-plus';
 import { ref ,watch } from 'vue'
 import { useRoute } from 'vue-router'
-import Menuitem from '../../components/header/MarketMenuItem.vue'
+import Menuitem from '@/components/header/MarketMenuItem.vue'
 import menuItems from '@/data/menuItems'
 
 const route = useRoute()
@@ -101,7 +101,7 @@ watch(() => route.path, (newPath) => {
 }
 </style>
 <style scoped>
-
+/* 调整箭头 */
 :deep(.el-sub-menu .el-sub-menu__icon-arrow){
     display: none;
     width: 0 !important;
@@ -109,6 +109,7 @@ watch(() => route.path, (newPath) => {
     margin: 0 !important;
     padding: 0 !important;
 }
+/* 调整大小 */
 :deep(.el-sub-menu .el-sub-menu__title) {
   padding-right: 20px !important;
 }
@@ -132,10 +133,6 @@ watch(() => route.path, (newPath) => {
   background-color: var(--el-menu-bg-color);
   color: var(--el-menu-text-color);
 
-}
-.icons_style{
-  
-  margin-right: 8px
 }
 .circle_style{
   border-radius: 50%;
